@@ -65,7 +65,7 @@ def dlImage(download_path, url, file_name):
     
 urls = getGoogleImages(wd, 1, 10)
 
-i = 1
+
 for i, url in enumerate(urls):
     dlImage("imgs/", url ,str(i) + ".jpg")
     
