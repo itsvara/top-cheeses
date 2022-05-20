@@ -4,6 +4,16 @@ import requests
 import io
 from PIL import Image
 import time
+import json
+import os
+import sys    
+import shutil
+
+imgsPath = "./imgs"
+
+imgsPathExist = os.path.exists(imgsPath)
+if not imgsPathExist:
+    os.makedirs(imgsPath)
 
 while True:
   try:
@@ -12,7 +22,7 @@ while True:
   except ValueError:
       print("Input a integer.")  
       continue
-  
+
 while True:
   try:
     inputDelay = float(input("Delay between image downloads: "))
@@ -20,6 +30,21 @@ while True:
   except ValueError:
       print("Input a integer or decimal.")  
       continue
+  
+agreeInput = input("Continuing will wipe the imgs folder. Continue? (y/n)")
+
+if agreeInput != "y":
+    configFile = open("config.json", "w")
+    configFile.write('{"exit": 1}')
+    sys.exit("Did not continue.")    
+else:
+    configFile = open("config.json", "w")
+    configFile.write('{"images": ' + str(inputImages) + '}')
+    
+    
+    
+    shutil.rmtree(imgsPath)
+    os.mkdir(imgsPath)
 
 driverPath = ".\\chromedriver.exe"
 

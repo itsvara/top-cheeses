@@ -1,0 +1,22 @@
+{
+  "name": "top-cheeses",
+  "version": "1.0.0",
+  "description": "top \\[NUMBER\\] cheeses screen once\r loop these until all images are cycled through (maybe even learn for loops and not just while loops)\r number \\[NUMBER\\] screen\r image of cheese\r end of loop\r optional thanks for watching screen if i feel like it",
+  "main": "buildVideo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsvara/top-cheeses.git"
+  },
+  "author": "itsvara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsvara/top-cheeses/issues"
+  },
+  "homepage": "https://github.com/itsvara/top-cheeses#readme",
+  "dependencies": {
+    "jimp": "^0.16.1"
+  }
+}
