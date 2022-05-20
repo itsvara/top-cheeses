@@ -3,7 +3,7 @@
 ### using old meme as an excuse to learn basic web scraping 
 
 #### plan
-##### figure out how to scrape images of cheese and let user choose how many cheese pictures they want (watch and use: https://www.youtube.com/watch?v=NBuED2PivbY ) 
+##### figure out how to scrape images of cheese and let user choose how many cheese pictures they want (watch and use: https://www.youtube.com/watch?v=NBuED2PivbY ) ✔
 
 ##### automatically create first screen at start of video saying \[top \[NUMBER\] cheeses\] and also create \[number \[NUMBER\]\] screen (use: https://github.com/lovell/sharp/ instead of jimp this time wow)
 

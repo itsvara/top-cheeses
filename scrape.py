@@ -5,6 +5,22 @@ import io
 from PIL import Image
 import time
 
+while True:
+  try:
+    inputImages = int(input("How many images: "))
+    break
+  except ValueError:
+      print("Input a integer.")  
+      continue
+  
+while True:
+  try:
+    inputDelay = float(input("Delay between image downloads: "))
+    break
+  except ValueError:
+      print("Input a integer or decimal.")  
+      continue
+
 driverPath = ".\\chromedriver.exe"
 
 wd = webdriver.Chrome(driverPath)
@@ -63,7 +79,7 @@ def dlImage(download_path, url, file_name):
     except Exception as e:
         print("failed: ", e)
     
-urls = getGoogleImages(wd, 1, 10)
+urls = getGoogleImages(wd, inputDelay, inputImages)
 
 
 for i, url in enumerate(urls):
