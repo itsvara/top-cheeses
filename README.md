@@ -19,4 +19,6 @@ optional thanks for watching screen if i feel like it
 
 ##### (stuff to use for video: https://github.com/h2non/videoshow)
 
+##### take user input for slide length in the video
+
 ##### stitch together audio in audio folder to be used in video

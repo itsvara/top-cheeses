@@ -30,7 +30,7 @@ while True:
 
 while True:
   try:
-    inputDelay = float(input("Delay between image downloads: "))
+    inputDelay = float(input("Delay between image downloads in seconds (Recommended: 1): "))
     break
   except ValueError:
       print("Input a integer or decimal.")  
