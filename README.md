@@ -7,8 +7,8 @@
 
 ##### automatically create first screen at start of video saying \[top \[NUMBER\] cheeses\] and also create \[number \[NUMBER\]\] screen ✔
 
-##### put together video
-##### structure for video
+##### put together video ✔
+structure for video
 
 top \[NUMBER\] cheeses screen once
 loop these until all images are cycled through (maybe even learn for loops and not just while loops)
@@ -17,4 +17,6 @@ image of cheese
 end of loop
 optional thanks for watching screen if i feel like it
 
-##### (stuff to use for video: https://leanylabs.com/blog/node-videos-konva/ https://konvajs.org/)
+##### (stuff to use for video: https://github.com/h2non/videoshow)
+
+##### stitch together audio in audio folder to be used in video

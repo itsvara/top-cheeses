@@ -106,7 +106,7 @@ def dlImage(download_path, url, file_name):
         file_path = download_path + file_name
         
         with open(file_path, "wb") as f:
-            image.save(f, "JPEG")
+            image.save(f, "PNG")
         
         print("it worked!?")
     except Exception as e:
@@ -116,6 +116,6 @@ urls = getGoogleImages(wd, inputDelay, inputImages)
 
 
 for i, url in enumerate(urls):
-    dlImage("imgs/", url ,str(i) + ".jpg")
+    dlImage("imgs/", url ,str(i) + ".png")
     
 wd.quit()

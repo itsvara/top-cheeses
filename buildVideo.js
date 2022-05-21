@@ -23,6 +23,8 @@ async function topnumcheeses() {
 
 topnumcheeses()
 
+var imageCount1 = imageCount + 1
+
 for (let i = 1; i < imageCount + 1; i++) {
     console.log("image " + i)
 
@@ -35,7 +37,7 @@ for (let i = 1; i < imageCount + 1; i++) {
             alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
             alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
         }, 320, 240)
-        await image.writeAsync(`./videoimgs/cheese${i}.png`);
+        await image.writeAsync(`./videoimgs/cheese${imageCount1-i}.png`);
     }
     numbernum()
 }
@@ -44,10 +46,54 @@ for (let i = 0; i < imageCount; i++) {
     console.log("resizing cheese " + i)
 
     async function resizeCheese() {
-        let image = await Jimp.read(`./imgs/${i}.jpg`);
+        let image = await Jimp.read(`./imgs/${i}.png`);
         image.resize(320,240)
-        await image.writeAsync(`./imgs/${i}.jpg`);
+        await image.writeAsync(`./imgs/${i}.png`);
     }
     resizeCheese()
 }
 
+var imgspath = './imgs/'
+
+var videoimgspath = '.\\videoimgs\\'
+
+var images = []
+
+images.push('./videoimgs/topcheeses.png')
+
+for (let i=0; i < imageCount; i++) {
+    console.log(`adding number ${i+1}`)
+    images.push(`./videoimgs/cheese${i+1}.png`)
+
+    console.log(`adding cheese ${i}`)
+    images.push(imgspath + i + '.png')
+
+}
+console.log(images)
+
+var videoOptions = {
+    fps: 20,
+    loop: 1, // seconds
+    transition: false,
+    videoBitrate: 32,
+    videoCodec: 'libx264',
+    size: '320x240',
+    audioBitrate: '32k',
+    audioChannels: 2,
+    format: 'mp4',
+    pixelFormat: 'yuv420p'
+}
+
+videoshow(images, videoOptions)
+    .audio('1.mp3')
+    .save('output.mp4')
+    .on('start', function (command) {
+        console.log('ffmpeg process started:', command)
+    })
+    .on('error', function (err, stdout, stderr) {
+        console.error('Error:', err)
+        console.error('ffmpeg stderr:', stderr)
+    })
+    .on('end', function (output) {
+        console.error('Video created in:', output)
+    })
