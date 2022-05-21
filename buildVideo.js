@@ -1,6 +1,6 @@
 const Jimp = require("jimp");
 const configFile = require("./config.json");
-//const videobg = require("./videoimgs/background.png");
+const videoshow = require('videoshow')
 
 if (configFile.exit == 1) {
     console.log("Did not continue, exiting...")
@@ -21,6 +21,8 @@ async function topnumcheeses() {
     await image.writeAsync('./videoimgs/topcheeses.png');
 }
 
+topnumcheeses()
+
 for (let i = 1; i < imageCount + 1; i++) {
     console.log("image " + i)
 
@@ -38,4 +40,14 @@ for (let i = 1; i < imageCount + 1; i++) {
     numbernum()
 }
 
-topnumcheeses()
+for (let i = 0; i < imageCount; i++) {
+    console.log("resizing cheese " + i)
+
+    async function resizeCheese() {
+        let image = await Jimp.read(`./imgs/${i}.jpg`);
+        image.resize(320,240)
+        await image.writeAsync(`./imgs/${i}.jpg`);
+    }
+    resizeCheese()
+}
+

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/itsvara/top-cheeses#readme",
   "dependencies": {
-    "jimp": "^0.16.1"
+    "jimp": "^0.16.1",
+    "videoshow": "^0.1.12"
   }
 }

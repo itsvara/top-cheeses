@@ -10,10 +10,15 @@ import sys
 import shutil
 
 imgsPath = "./imgs"
+videoImgsPath = "./videoimgs"
 
 imgsPathExist = os.path.exists(imgsPath)
 if not imgsPathExist:
     os.makedirs(imgsPath)
+    
+videoImgsPathExist = os.path.exists(videoImgsPath)
+if not videoImgsPathExist:
+    os.makedirs(videoImgsPath)
 
 while True:
   try:
@@ -31,7 +36,7 @@ while True:
       print("Input a integer or decimal.")  
       continue
   
-agreeInput = input("Continuing will wipe the imgs folder. Continue? (y/n)")
+agreeInput = input("Continuing will wipe the imgs and videoimgs folder. Continue? (y/n) ")
 
 if agreeInput != "y":
     configFile = open("config.json", "w")
@@ -45,6 +50,9 @@ else:
     
     shutil.rmtree(imgsPath)
     os.mkdir(imgsPath)
+    
+    shutil.rmtree(videoImgsPath)
+    os.mkdir(videoImgsPath)
 
 driverPath = ".\\chromedriver.exe"
 
