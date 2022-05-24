@@ -1,6 +1,6 @@
 # top-cheeses
 
-### using old meme as an excuse to learn basic web scraping 
+### using old meme as an excuse to learn web scraping 
 
 #### plan
 ##### figure out how to scrape images of cheese and let user choose how many cheese pictures they want (watch and use: https://www.youtube.com/watch?v=NBuED2PivbY ) ✔
@@ -15,10 +15,10 @@ loop these until all images are cycled through (maybe even learn for loops and n
 number \[NUMBER\] screen
 image of cheese
 end of loop
-optional thanks for watching screen if i feel like it
+thanks for watching screen
 
-##### (stuff to use for video: https://github.com/h2non/videoshow)
+##### (stuff to use for video: https://github.com/h2non/videoshow https://www.npmjs.com/package/audioconcat) 
 
-##### take user input for slide length in the video
+##### take user input for slide length in the video ✔
 
-##### stitch together audio in audio folder to be used in video
+##### stitch together audio in audio folder to be used in video ✔

@@ -27,10 +27,26 @@ while True:
   except ValueError:
       print("Input a integer.")  
       continue
+  
+while True:
+  try:
+    inputAudio = int(input("How many audios in the audio folder: "))
+    break
+  except ValueError:
+      print("Input a integer.")  
+      continue
 
 while True:
   try:
     inputDelay = float(input("Delay between image downloads in seconds (Recommended: 1): "))
+    break
+  except ValueError:
+      print("Input a integer or decimal.")  
+      continue
+
+while True:
+  try:
+    lengthInput = float(input("Length each image is on screen for: "))
     break
   except ValueError:
       print("Input a integer or decimal.")  
@@ -41,18 +57,22 @@ agreeInput = input("Continuing will wipe the imgs and videoimgs folder. Continue
 if agreeInput != "y":
     configFile = open("config.json", "w")
     configFile.write('{"exit": 1}')
+    configFile.close()
     sys.exit("Did not continue.")    
 else:
-    configFile = open("config.json", "w")
-    configFile.write('{"images": ' + str(inputImages) + '}')
-    
-    
-    
     shutil.rmtree(imgsPath)
     os.mkdir(imgsPath)
     
     shutil.rmtree(videoImgsPath)
     os.mkdir(videoImgsPath)
+
+configFile = open("config.json", "w")
+configFile.write('{"length": ' + str(lengthInput))
+configFile.close()
+configFile = open("config.json", "a")
+configFile.write(', "images": ' + str(inputImages))
+configFile.write(', "audios": ' + str(inputAudio)+'}')
+configFile.close() 
 
 driverPath = ".\\chromedriver.exe"
 

@@ -2,6 +2,7 @@ const Jimp = require("jimp");
 const configFile = require("./config.json");
 const videoshow = require('videoshow');
 const { create } = require("jimp");
+const audioconcat = require("audioconcat");
 
 if (configFile.exit == 1) {
     console.log("Did not continue, exiting...")
@@ -9,6 +10,8 @@ if (configFile.exit == 1) {
 }
 
 var imageCount = configFile.images;
+var audioCount = configFile.audios;
+var audioCount1 = configFile.audios+1;
 
 async function createImage(text, fileName) {
     let image = await Jimp.read('background.png');
@@ -29,7 +32,7 @@ createImage(`Top ${imageCount} cheeses`, 'topcheeses')
 createImage('thanks for watching', 'thanksforwatching')
 
 //Create number {i} screen for every cheese image
-var imageCount1 = imageCount + 1
+var imageCount1 = imageCount + 1;
 
 for (let i = 1; i < imageCount + 1; i++) {
     console.log("image " + i)
@@ -50,11 +53,15 @@ for (let i = 0; i < imageCount; i++) {
     resizeCheese()
 }
 
-var imgspath = './imgs/'
+var audiopath = './audio/';
 
-var videoimgspath = '.\\videoimgs\\'
+var imgspath = './imgs/';
 
-var images = []
+var videoimgspath = '.\\videoimgs\\';
+
+var images = [];
+
+var audios = [];
 
 images.push('./videoimgs/topcheeses.png')
 
@@ -65,16 +72,37 @@ for (let i = 0; i < imageCount; i++) {
 
     console.log(`adding cheese ${i}`)
     images.push(imgspath + i + '.png')
-
 }
 
 images.push('./videoimgs/thanksforwatching.png')
+
+if (audioCount>0) {
+for (let i = 1; i < audioCount1; i++) {
+    console.log(`adding audio ${i}`)
+    audios.push(audiopath + i + '.mp3')
+}
+
+audioconcat(audios)
+  .concat(audiopath+'audio.mp3')
+  .on('start', function (command) {
+    console.log('ffmpeg process started:', command)
+  })
+  .on('error', function (err, stdout, stderr) {
+    console.error('Error:', err)
+    console.error('ffmpeg stderr:', stderr)
+  })
+  .on('end', function (output) {
+    console.error('Audio created')
+  })
+} else {
+    console.log("No audio found.")
+}
 
 //console.log(images)
 
 var videoOptions = {
     fps: 20,
-    loop: 1, // seconds
+    loop: configFile.length, // seconds
     transition: false,
     videoBitrate: 32,
     videoCodec: 'libx264',
@@ -85,8 +113,10 @@ var videoOptions = {
     pixelFormat: 'yuv420p'
 }
 
+//If audios are found then add to video, if not then add no audio.
+if (audioCount>0) {
 videoshow(images, videoOptions)
-    .audio('./audio/1.mp3')
+    .audio('./audio/audio.mp3')
     .save('output.mp4')
     .on('start', function (command) {
         console.log('ffmpeg process started:', command)
@@ -98,3 +128,17 @@ videoshow(images, videoOptions)
     .on('end', function (output) {
         console.error('Video created in:', output)
     })
+} else {
+    videoshow(images, videoOptions)
+    .save('output.mp4')
+    .on('start', function (command) {
+        console.log('ffmpeg process started:', command)
+    })
+    .on('error', function (err, stdout, stderr) {
+        console.error('Error:', err)
+        console.error('ffmpeg stderr:', stderr)
+    })
+    .on('end', function (output) {
+        console.error('Video created in:', output)
+    })
+}
