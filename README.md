@@ -1,5 +1,8 @@
 # top-cheeses
 
+## WARNING: this was made for funnies and is pretty buggy
+## ALSO: you will need a webdriver to actually scrape the images, this uses chromes webdriver (https://chromedriver.chromium.org/downloads) but you could probably modify this to make it work with firefox etc 
+
 ### using old meme as an excuse to learn web scraping 
 
 #### plan

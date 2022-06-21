@@ -11,7 +11,7 @@
     "url": "git+https://github.com/itsvara/top-cheeses.git"
   },
   "author": "itsvara",
-  "license": "ISC",
+  "license": "GPL-2.0-or-later",
   "bugs": {
     "url": "https://github.com/itsvara/top-cheeses/issues"
   },
@@ -20,5 +20,6 @@
     "audioconcat": "^0.1.4",
     "jimp": "^0.16.1",
     "videoshow": "^0.1.12"
-  }
+  },
+  "devDependencies": {}
 }
