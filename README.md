@@ -5,7 +5,7 @@
 
 ### using old meme as an excuse to learn web scraping 
 
-#### plan
+#### now enjoy this stupid plan i made to figure out what i was meant to be doing :)
 ##### figure out how to scrape images of cheese and let user choose how many cheese pictures they want (watch and use: https://www.youtube.com/watch?v=NBuED2PivbY ) ✔
 
 ##### automatically create first screen at start of video saying \[top \[NUMBER\] cheeses\] and also create \[number \[NUMBER\]\] screen ✔
